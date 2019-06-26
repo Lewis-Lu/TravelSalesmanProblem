@@ -1,3 +1,7 @@
+__author__ = "Hong Lu"
+__email__ = "hl2358@cornell.edu"
+__copyright__ = "Copyright 2019, Hong Lu"
+
 import sys
 import copy
 import Generate_Data as my_mat
