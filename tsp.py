@@ -9,42 +9,50 @@ import time
 
 '''
     n*n Random generated data (zero in diagonal)
-
+    Bruce Force Method
+    Time cmplx : O(n!)
 '''
 
 # global parameters
-N = 10
-mat = my_mat.Generate_Data(N)
+
 exp = {}
 path = []
 
 
-def tsp(n, matrix):
+def TSP(n, matrix):
     '''
-    tsp function
+    TSP function
+    param n: represent n*n matrix
+    param matrix: Cost Mat
     '''
+
     t = time.time()
     # recursively call Get_minimum
-    Get_minimum(0, [i for i in range(1,n)])
+    visit = [i for i in range(1,n)]
+    COST = Get_minimum(0, visit, matrix)
     duration = time.time() - t
-    
-    print("Opt Time =", duration, "\n") # output optimization duration
-    
-    # # ouput data
-    # for i in mat:
-    #     print(i)
-    # print("\n")
-    # for i in exp:
 
-    #     print(i, "\t", exp[i])
-    # print("\n")
+    print("Task Quantity:",N," Opt Time(s) =", duration, end='\n') # output optimization duration
 
-    # for i in path:
-    #     print(i)
-    # print("\n")
+    # Critical Path
+    C_PATH = []
+    C_PATH.append(0) # add start point to path
+    head = path.pop() # pop up first path buffer, get indexed
+    C_PATH.append(head[1][0])
+    # just to find n-2 times
+    for i in range(n-2):
+        for j in path:
+            if j[0] == tuple(head[1]):
+                head = j
+                C_PATH.append(head[1][0])
+                break
+            if i == n-3:
+                C_PATH.append(head[1][1][0])
+                break
+    return C_PATH, duration, COST
 
 
-def Get_minimum(s, Vertex):
+def Get_minimum(s, Vertex, mat):
     '''
         input(s, {Vertex})
 
@@ -57,7 +65,7 @@ def Get_minimum(s, Vertex):
     # prepare variables
     values = []
     all_min = []
-
+    # 
     # do Vertex.size()'s computation in one iteration
     # total time cmplx is n!
     for i in Vertex:
@@ -70,19 +78,56 @@ def Get_minimum(s, Vertex):
         # (c,{d}) (d,{c})  (b,{d}) (d,{b})  (b,{c}) (c,{b})
         set_tmp = copy.deepcopy(list(Vertex)) # have a copy of {Vertex}, convert to list
         set_tmp.remove(i)
-        
         # call Get_minimum for smaller Vertex
-        res = Get_minimum(i, set_tmp)
-        all_min.append((s, tuple(set_tmp)))
+        res = Get_minimum(i, set_tmp, mat)
+        all_min.append([i,tuple(set_tmp)])
         values.append(mat[s][i] + res)
+    #
+    # out of for-loop        
+    # 
+    MIN_COST = min(values)
+    #
+    # store the 
+    #
+    exp[s, tuple(Vertex)] = MIN_COST
+    path.append(((s,tuple(Vertex)),tuple(all_min[values.index(MIN_COST)])))
+    #
+    # return the minimum cost of (s, {Vertex})
+    #
+    return MIN_COST
+
+
+def Path_Verification(p, mat):
+    sum = []
+    for i in range(len(p)-1):
+        sum.append(mat[p[i]][p[i+1]])
+    return sum    
     
-    # find the minimum value
-    exp[s, tuple(Vertex)] = min(values)
-    min_val = min(values)
-    path.append(((s, tuple(Vertex)), all_min[values.index(min_val)]))
-
-    return min_val
-
 if __name__ == "__main__":
-   tsp(N, mat)
-   sys.exit(0)
+    #
+    # FOR RANDOMLY GENERATEDe MATRIX
+    N = 10
+    mat = my_mat.Generate_Data(N)
+    #
+    # FOR TEST
+    # N = 4
+    # mat = [
+    #     [0,3,6,2],
+    #     [5,0,2,1],
+    #     [6,4,0,2],
+    #     [4,3,2,0]
+    # ]
+    for i in mat:
+        print(i)
+    print('\n')
+    arrangement, time, C = TSP(N, mat)
+    cost = Path_Verification(arrangement, mat)
+    arr = copy.deepcopy(arrangement)
+    last = arr.pop()
+    arrangement.append(0)
+    cost += mat[last][0]
+    print("COST:", C, end='\n')
+    print("Task Arrangement:", arrangement, end='\n')
+
+    sys.exit(0)
+
