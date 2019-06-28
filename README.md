@@ -5,11 +5,13 @@
 # TravelSalesmanProblem
 TSP problem solver
 
+Given a set of cities and distances between every pair of cities, the problem is to find shortest possible route that visits every city exactly once and return to the starting point
+
 ## Brutal Force
 
 [code] [Brutal Force Method](tsp.py)
 
-TIME Complexity is O(n!) 
+TIME Complexity lower bound is $\Omega$(n!) 
 
 ### illusitration
 
