@@ -98,18 +98,20 @@ def Get_minimum(s, Vertex, mat):
 
 
 def Path_Verification(p, mat):
-    sum = []
+    ans = []
     for i in range(len(p)-1):
-        sum.append(mat[p[i]][p[i+1]])
-    return sum    
+        ans.append(mat[p[i]][p[i+1]])
+    return sum(ans)    
     
 if __name__ == "__main__":
     #
-    # FOR RANDOMLY GENERATEDe MATRIX
+    # FOR RANDOMLY GENERATED MATRIX
+    # 
     N = 10
     mat = my_mat.Generate_Data(N)
     #
     # FOR TEST
+    # 
     # N = 4
     # mat = [
     #     [0,3,6,2],
@@ -117,16 +119,19 @@ if __name__ == "__main__":
     #     [6,4,0,2],
     #     [4,3,2,0]
     # ]
-    for i in mat:
-        print(i)
-    print('\n')
+    #
+    # FOR SHOW COST MAP
+    #
+    # for i in mat:
+    #     print(i)
+    # print('\n')
     arrangement, time, C = TSP(N, mat)
     cost = Path_Verification(arrangement, mat)
     arr = copy.deepcopy(arrangement)
     last = arr.pop()
     arrangement.append(0)
     cost += mat[last][0]
-    print("COST:", C, end='\n')
+    print("COST:", cost, end='\n')
     print("Task Arrangement:", arrangement, end='\n')
 
     sys.exit(0)
