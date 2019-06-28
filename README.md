@@ -5,9 +5,9 @@
 # TravelSalesmanProblem
 TSP problem solver
 
-## Bruce Force
+## Brutal Force
 
-[code] [Bruce Force Method](tsp.py)
+[code] [Brutal Force Method](tsp.py)
 
 TIME Complexity is O(n!) 
 
