@@ -23,5 +23,5 @@ def TSP_DP(c, cities):
 
 if __name__ == "__main__":
     N = 5
-    mat = my_mat.Generate_Data(N)
+    mat = my_mat.Generate_Data_Undirected(N)
     TSP_DP(1,[3,2])
