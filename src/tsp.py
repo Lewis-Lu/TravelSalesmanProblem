@@ -9,7 +9,7 @@ import time
 
 '''
     n*n Random generated data (zero in diagonal)
-    Bruce Force Method
+    Naive way to solve TSP problem
     Time cmplx : O(n!)
 '''
 
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     # FOR RANDOMLY GENERATED MATRIX
     # 
     # N = 5
-    # mat = my_mat.Generate_Data(N)
+    # mat = my_mat.Generate_Data_Directed(N)
     #
     # FOR TEST
     # 

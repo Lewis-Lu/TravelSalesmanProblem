@@ -8,9 +8,16 @@ def main():
     '''
     main function
     '''
+    
     pass
 
+
 def TSP_DP(c, cities):
+    '''
+    Dynamic Programming Method
+    
+    '''
+
     assert c not in cities,"first argument c in cities"
 
 
