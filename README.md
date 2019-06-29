@@ -9,7 +9,7 @@ Given a set of cities and distances between every pair of cities, the problem is
 
 ## Brutal Force
 
-[code] [Brutal Force Method](tsp.py)
+[code] [Brutal Force Method](src/tsp.py)
 
 TIME Complexity lower bound is $\Omega$(n!) 
 

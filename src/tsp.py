@@ -9,7 +9,7 @@ import time
 
 '''
     n*n Random generated data (zero in diagonal)
-    Bruce Force Method
+    Naive way to solve TSP problem
     Time cmplx : O(n!)
 '''
 
@@ -17,7 +17,7 @@ import time
 
 exp = {}
 path = []
-
+call = 0
 
 def TSP(n, matrix):
     '''
@@ -61,7 +61,11 @@ def Get_minimum(s, Vertex, mat):
     '''
     # base case of dp 
     if(len(Vertex) == 1):
+        global call
+        call += 1
+        print("base case here!", call, end='\n')
         return mat[s][Vertex[0]]
+
     # prepare variables
     values = []
     all_min = []
@@ -82,6 +86,7 @@ def Get_minimum(s, Vertex, mat):
         res = Get_minimum(i, set_tmp, mat)
         all_min.append([i,tuple(set_tmp)])
         values.append(mat[s][i] + res)
+        
     #
     # out of for-loop        
     # 
@@ -107,18 +112,18 @@ if __name__ == "__main__":
     #
     # FOR RANDOMLY GENERATED MATRIX
     # 
-    N = 10
-    mat = my_mat.Generate_Data(N)
+    # N = 5
+    # mat = my_mat.Generate_Data_Directed(N)
     #
     # FOR TEST
     # 
-    # N = 4
-    # mat = [
-    #     [0,3,6,2],
-    #     [5,0,2,1],
-    #     [6,4,0,2],
-    #     [4,3,2,0]
-    # ]
+    N = 4
+    mat = [
+        [0,1,6,2],
+        [5,0,1,1],
+        [6,4,0,1],
+        [1,3,2,0]
+    ]
     #
     # FOR SHOW COST MAP
     #
