@@ -11,7 +11,7 @@ Given a set of cities and distances between every pair of cities, the problem is
 
 [code] [Brutal Force Method](src/tsp.py)
 
-TIME Complexity lower bound is $\Omega$(n!) 
+TIME Complexity lower bound is Ω(n!) 
 
 ### illusitration
 
