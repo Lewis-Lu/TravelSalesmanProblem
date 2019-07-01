@@ -112,18 +112,21 @@ if __name__ == "__main__":
     #
     # FOR RANDOMLY GENERATED MATRIX
     # 
-    # N = 5
-    # mat = my_mat.Generate_Data_Directed(N)
+    N = 5
+    mat = my_mat.Generate_Data_Undirected(N)
+    for i in mat:
+        print(i)
+    print(end='\n')
     #
     # FOR TEST
     # 
-    N = 4
-    mat = [
-        [0,1,6,2],
-        [5,0,1,1],
-        [6,4,0,1],
-        [1,3,2,0]
-    ]
+    # N = 4
+    # mat = [
+    #     [0,1,6,2],
+    #     [5,0,1,1],
+    #     [6,4,0,1],
+    #     [1,3,2,0]
+    # ]
     #
     # FOR SHOW COST MAP
     #
