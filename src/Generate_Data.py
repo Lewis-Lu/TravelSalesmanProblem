@@ -19,7 +19,7 @@ def Generate_Data_Undirected(n):
     res = np.zeros((n, n))
     for i in range(n):
         for j in range(i+1, n):
-            rand = np.random.randint(10,size=1)
+            rand = np.random.randint(1,10,size=1)
             res[i][j] = rand
             res[j][i] = res[i][j]
     return res
