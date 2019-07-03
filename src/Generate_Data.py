@@ -24,3 +24,19 @@ def Generate_Data_Undirected(n):
             res[j][i] = res[i][j]
     return res
 
+
+def Generate_Coordinates(n, dim):
+    ''' Randomly generate coordinates
+
+    '''
+    res = np.zeros((n,dim))
+    for i in range(n):
+        for j in range(dim):
+            rand_val = 100 * np.random.random_sample()
+            res[i][j] = rand_val
+    return res
+
+
+# if __name__ == "__main__":
+#     ans = Generate_Coordinates(4,2)
+#     print(ans)
