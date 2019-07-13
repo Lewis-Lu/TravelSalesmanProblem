@@ -56,3 +56,4 @@ def Calculate_Cost(cor_mat):
             ans[j][i] = ans[i][j]
     print("waypoint cost matrix complete.", end='\n')
     return list(ans)
+

@@ -6,6 +6,7 @@ import sys
 import copy
 import Generate_Data as my_mat
 import time
+import tsp_plot as tplt
 
 '''
     n*n Random generated data (zero in diagonal)
@@ -63,7 +64,6 @@ def Get_minimum(s, Vertex, mat):
     if(len(Vertex) == 1):
         global call
         call += 1
-        print("base case here!", call, end='\n')
         return mat[s][Vertex[0]]
 
     # prepare variables
@@ -113,7 +113,9 @@ if __name__ == "__main__":
     # FOR RANDOMLY GENERATED MATRIX
     # 
     N = 5
-    mat = my_mat.Generate_Data_Undirected(N)
+    dim = 2
+    coordinates = my_mat.Generate_Coordinates(N, dim)
+    mat = my_mat.Calculate_Cost(coordinates)
     for i in mat:
         print(i)
     print(end='\n')
@@ -141,6 +143,8 @@ if __name__ == "__main__":
     cost += mat[last][0]
     print("COST:", cost, end='\n')
     print("Task Arrangement:", arrangement, end='\n')
+    
+    tplt.plot_path_2D(coordinates, 0, arrangement)
 
     sys.exit(0)
 
