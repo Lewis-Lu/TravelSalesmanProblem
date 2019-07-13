@@ -5,6 +5,7 @@ __copyright__ = "Copyright 2019, Hong Lu"
 import sys
 import Generate_Data as my_mat
 import numpy as np
+import tsp_plot as tplt
 import time
 
 '''DP method to handle TSP problem
@@ -12,9 +13,11 @@ import time
 '''
 INIT_VAL = -1
 
-N = 10 # quantity of positions
+N = 15 # quantity of positions
+dim = 3 # coordinate dimension
 
-mat = my_mat.Generate_Data_Undirected(N) # position map
+coordination_map = my_mat.Generate_Coordinates(N, dim) # position map
+mat = my_mat.Calculate_Cost(coordination_map)
 
 # use dp arrays to memorization
 dp = np.ones((N, 2**N))*INIT_VAL # initialize dp with INIT_VAL
@@ -50,6 +53,7 @@ def TSP_DP(s, Vertex):
                 
     return dp[s][Vertex]
 
+
 if __name__ == "__main__":
     '''main function
     
@@ -78,4 +82,6 @@ if __name__ == "__main__":
     ans = TSP_DP(0,1)
     finish = time.time()
     print("cost = ", ans, '\t', "time =", finish-start, end='\n')
+    
+    tplt.plot(coordination_map)
     
