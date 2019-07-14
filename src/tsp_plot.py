@@ -16,7 +16,7 @@ def plot(cor_matrix):
         x = mat[0]
         y = mat[1]
         plt.plot(x, y,'ro')
-        plt.axis([0, mi.map_size, 0, mi.map_size])
+        plt.axis([0, mi._get_global_value('map_size'), 0, mi._get_global_value('map_size')])
         plt.xlabel('x(m)')
         plt.ylabel('y(m)')
         plt.grid(True)
@@ -47,7 +47,7 @@ def plot_path_2D(cor_matrix, init, sequence):
         y = [cor_matrix[sequence[i]][1], cor_matrix[sequence[i+1]][1]]
         plt.plot(x, y, 'og--')
 
-    plt.axis([0, mi.map_size, 0, mi.map_size])
+    plt.axis([0, mi._get_global_value('map_size'), 0, mi._get_global_value('map_size')])
     plt.xlabel('x(m)')
     plt.ylabel('y(m)')
     plt.grid(True)
