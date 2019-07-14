@@ -40,7 +40,6 @@ def plot_path_2D(cor_matrix, init, sequence):
     sequence: visit sequence
     '''
     
-
     for i in range(len(sequence)-1):
         if i == init:
             plt.plot(cor_matrix[sequence[i]][0],cor_matrix[sequence[i]][1],'rd', markersize='12')
