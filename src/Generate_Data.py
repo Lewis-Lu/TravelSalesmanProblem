@@ -32,7 +32,7 @@ def Generate_Coordinates(n, dim):
     res = np.zeros((n,dim))
     for i in range(n):
         for j in range(dim):
-            rand_val = mi.map_size * np.random.random_sample()
+            rand_val = mi._get_global_value('map_size') * np.random.random_sample()
             res[i][j] = rand_val
     return res
 
