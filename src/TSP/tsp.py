@@ -6,9 +6,7 @@ __copyright__ = "Copyright 2019, Hong Lu"
 
 import sys
 import copy
-import Generate_Data as my_mat
 import time
-import tsp_plot as tplt
 
 '''
     n*n Random generated data (zero in diagonal)
@@ -107,45 +105,4 @@ class TSP_NAIVE:
         ans = []
         for i in range(len(p)-1):
             ans.append(mat[p[i]][p[i+1]])
-        return sum(ans)    
-    
-
-    # #
-    # # FOR RANDOMLY GENERATED MATRIX
-    # # 
-    # N = 5
-    # dim = 2
-    # coordinates = my_mat.Generate_Coordinates(N, dim)
-    # mat = my_mat.Calculate_Cost(coordinates)
-    # for i in mat:
-    #     print(i)
-    # print(end='\n')
-    # #
-    # # FOR TEST
-    # # 
-    # # N = 4
-    # # mat = [
-    # #     [0,1,6,2],
-    # #     [5,0,1,1],
-    # #     [6,4,0,1],
-    # #     [1,3,2,0]
-    # # ]
-    # #
-    # # FOR SHOW COST MAP
-    # #
-    # # for i in mat:
-    # #     print(i)
-    # # print('\n')
-    # arrangement, time, C = TSP(N, mat)
-    # cost = Path_Verification(arrangement, mat)
-    # arr = copy.deepcopy(arrangement)
-    # last = arr.pop()
-    # arrangement.append(0)
-    # cost += mat[last][0]
-    # print("COST:", cost, end='\n')
-    # print("Task Arrangement:", arrangement, end='\n')
-    
-    # tplt.plot_path_2D(coordinates, 0, arrangement)
-
-    # sys.exit(0)
-
+        return sum(ans)
