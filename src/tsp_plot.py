@@ -79,3 +79,21 @@ def plot_path_2D(cor_matrix, init, sequence):
     plt.ylabel('y(m)')
     plt.grid(True)
     plt.show()
+
+def plot_cluster_3D(cluster, color=['silver','olive','tomato','linen','purple','y'], color_centroid='b'):
+    
+    fig = plt.figure()
+    ax = Axes3D(fig)
+    count = 0
+    for i in range(len(cluster)):
+        for j in cluster[i]:
+            if count == 0:
+                ax.scatter(j[0], j[1], j[2], c=color[i], marker='*')
+            ax.scatter(j[0], j[1], j[2], c=color[i])
+        count = 0
+    
+    ax.set_xlabel('x (m)')
+    ax.set_ylabel('y (m)')
+    ax.set_zlabel('z (m)')
+    plt.show()
+

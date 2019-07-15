@@ -20,14 +20,17 @@ mi._set_global_value('map_size', 100)
 mi._set_global_value('naive_N', 10)
 mi._set_global_value('dp_N', 20)
 mi._set_global_value('dim', 2)
-mi._set_global_value('taskpoint', 100)
-mi._set_global_value('carrier', 5)
+mi._set_global_value('taskpoint', 30)
+mi._set_global_value('carrier', 3)
 
 def TaskClusterAssignment():
     n_task = mi._get_global_value('taskpoint')
     n_carrier = mi._get_global_value('carrier')
     handle = ta.TaskAssignment(n_carrier, n_task, 3)
-    return handle._spawn(mi._get_global_value('map_size'))
+    coordinates = handle._spawn(mi._get_global_value('map_size'))
+    cluster = handle._cluster(coordinates)
+    tplt.plot_cluster_3D(cluster)
+    
 
 def TravelingAssignment():
     dim = mi._get_global_value('dim')
@@ -70,5 +73,4 @@ def TravelingAssignment():
         print("cost = ", ans, '\t', "time =", finish-start, end='\n')
 
 if __name__ == "__main__":
-
-    tplt.plot(TaskClusterAssignment(), mi._get_global_value('carrier'))
+    TaskClusterAssignment()
