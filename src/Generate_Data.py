@@ -1,6 +1,7 @@
 import numpy as np
 import MapInfo as mi
 
+
 # def Generate_Data_Directed(n):
 #     '''Randomly generate directed data
 #     '''
