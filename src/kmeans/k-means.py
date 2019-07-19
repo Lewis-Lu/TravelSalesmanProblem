@@ -179,9 +179,8 @@ def Plot(Set_Cluster, traj):
     for i in range(k):
         t = traj[i]
         transpose = list(map(list, zip(*t)))
-        plt.plot(transpose[0], transpose[1], 'g--')
+        plt.plot(transpose[0], transpose[1], 'r*-')
 
-    plt.show()
 
 
 def main():
@@ -191,9 +190,9 @@ def main():
     
 
     # initialization randomly generate k centers
-    k = 4
-    initial_centroids_1 = [[random.uniform(0,100) for i in range(dim)] for j in range(k)]
-    
+    k = 3
+    #  initial_centroids_1 = [[random.uniform(0,100) for i in range(dim)] for j in range(k)]
+       
     # 
     # initial test
     #
@@ -206,12 +205,18 @@ def main():
 
     # generate Points
     Points = [PointGen(dim, lb, ub) for i in range(N)]
+    # for subplot purpose
+    subplot_col = 2
+    n_fig = 10
+    subplot_row = math.ceil(n_fig/subplot_col)
 
-    for i in range(10):
+    for i in range(1, n_fig+1):
+        plt.subplot(subplot_row, subplot_col, i)
+        initial_centroids_1 = [[random.uniform(0,100) for i in range(dim)] for j in range(k)]
         handle = K_means(k, Points, initial_centroids_1)
         result, traj = handle.Kmeans()
         Plot(result, traj)
-
+    plt.show()
 
 if __name__ == "__main__":
     main()
