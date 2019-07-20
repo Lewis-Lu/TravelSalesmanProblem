@@ -15,13 +15,52 @@
     We can adapt several representations to the tasks by using various algorithms based on different data structures.
     The idea, we often bring about easily, is to connect or divide the tasks into an entity or several groups.
     \subsubsection*{k-means}
-    Within clustering algorithm, k-means is efficient and gurantees to converge.
+    Within clustering algorithm, k-means is efficient and gurantees to converge. 
+    
+    It depends that what constitutes good clusters subjecting to various criteria, both ad-hoc or systematic.  
+    
+    simple k-means is shown as algorithm~\ref{simple k-means}
+    
+    \subsubsection*{Yinyang k-means}
+    Yinyang k-means was proposed @ICML in 2015, optimizes $Assignment$ process of algorithm~\ref{simple k-means} mainly.
+
     \begin{algorithm}[H]
         \SetAlgoLined
+        \DontPrintSemicolon
 
         \KwData{k, Points, initial centroids}  
         \KwResult{Clusters: C}
+        \Begin{
+        Initialization\;\Begin{
+            $centroids \gets \textnormal{initial centroids}$\\
+            C, result = $\textbf{Assginment}$($points$, $centroids$)\\
+        }            
+        \While{result not converges}{
+            \For{Points in cluster $C_{i},\;i = 1,2,3,...,k$}{
+                Calculate New Centroid $centroids_{i}$ of $C_{i},\; i=1,2,3,...,k$ \\
+            }
+            C, result = $\textbf{Assginment}$($points$, $centroids$)\\
+            \If{Assginment not change}{
+                result converges
+            }
+        }
+        \Return{C}\\
+        }
+        \;
+        $\textbf{Assignment}($points$, $centroids$)$\\
+        \Begin{
+            \For{$p$ in $Points$}{
+                Calculate Distance between $p$ and $centroids_{i}, \; i = 1, 2, 3,...,k$\\
+                Store Nearest centroid $c^{*}$ of $p$
+            }
+            assign $p_{i}$ to respective $c_{i}^*$ in $C$
+            \If{assignment is stable}{
+               \Return{C, converge}
+            }
+            \Return{C, not converge}
+        }
 
-        \caption{Jejune K-means}
+        \caption{Jejune K-means: Centroid-based k-means}
+        \label{simple k-means}
     \end{algorithm}
 \end{document}
