@@ -22,7 +22,15 @@
     simple k-means is shown as algorithm~\ref{simple k-means}
     
     \subsubsection*{Yinyang k-means}
-    Yinyang k-means was proposed @ICML in 2015, optimizes $Assignment$ process of algorithm~\ref{simple k-means} mainly.
+    Yinyang k-means, proposed @ICML in 2015, optimizes $Assignment$ process of algorithm~\ref{simple k-means} mainly. 
+    It uses Triangle inequality to reduce computations which has been implemented before.
+    Let's introduce some notations, $c_{i} \in C,\; i = 1,2,3,...,k$, where $C$ represents set of cluster centers and $c$ is a cluster within the set.
+    Let $b(x)$ ("the best cluster for") be the cluster to which the point is assigned to. Let $b'(x), c',C'$ be the entity in the next iteration.
+    Let $\sigma(c)$ represents $d(c, c')$
+
+    Global filtering identifies whether a point $x$ changes its cluster in an assignment step with a \textbf{single} comparison.
+    Algorithm maintains an upper and lower bound, where $ub(x) \geq d(x, b(x))$ and $lb(x) \leq d(x,c), \forall c \in C-b(x)$
+
 
     \begin{algorithm}[H]
         \SetAlgoLined
