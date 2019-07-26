@@ -1,12 +1,11 @@
 '''TSP plotting section
 
 '''
-import MapInfo as mi
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
-def plot(cor_matrix, specific=None, color='b', default_color='r'):
+def plot(cor_matrix, mapsize, specific=None, color='b', default_color='r'):
     '''plot function
     cor_matrix: coordination matrix
     '''
@@ -44,7 +43,7 @@ def plot(cor_matrix, specific=None, color='b', default_color='r'):
             x = mat[0]
             y = mat[1]
             plt.plot(x, y,'ro')
-            plt.axis([0, mi._get_global_value('map_size'), 0, mi._get_global_value('map_size')])
+            plt.axis([0, mapsize, 0, mapsize])
             plt.xlabel('x(m)')
             plt.ylabel('y(m)')
             plt.grid(True)
@@ -60,7 +59,7 @@ def plot(cor_matrix, specific=None, color='b', default_color='r'):
             ax.set_zlabel('z (m)')            
             plt.show()
 
-def plot_path_2D(cor_matrix, init, sequence):
+def plot_path_2D(cor_matrix, init, sequence, mapsize):
     '''plot_path_2D
     cor_matrix: coordination matrixexit
     init: initialization waypoint
@@ -74,7 +73,7 @@ def plot_path_2D(cor_matrix, init, sequence):
         y = [cor_matrix[sequence[i]][1], cor_matrix[sequence[i+1]][1]]
         plt.plot(x, y, 'og--')
 
-    plt.axis([0, mi._get_global_value('map_size'), 0, mi._get_global_value('map_size')])
+    plt.axis([0, mapsize, 0, mapsize])
     plt.xlabel('x(m)')
     plt.ylabel('y(m)')
     plt.grid(True)
